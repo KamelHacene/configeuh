@@ -110,9 +110,9 @@
 "xdotool click 3"
     Shift + KP_Right
 
-# What is this music
-#"notify-send -t 2000 -i /usr/share/icons/gnome/24x24/status/audio-volume-medium.png "`cmus-remote -Q | sed -n -e 's/tag\s\(\w*\)/\1\t:\t/gp'`""
-#    Shift + XF86AudioMute
+# What is this music (cmus)
+"music_notifier.sh -t 2000 -c"
+    Shift + XF86AudioMute
 ##################################
 # End of xbindkeys configuration #
 ##################################
