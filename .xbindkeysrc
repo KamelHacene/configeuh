@@ -67,7 +67,9 @@
 
 ############### END EXAMPLES
 
-### Volume control
+#==============================================================================
+#   Music
+#==============================================================================
 
 # Volume +
 "amixer -c 0 sset Master 5+ && killall -USR1 i3status"
@@ -85,10 +87,6 @@
 "xautolock -locknow"
     XF86ScreenSaver
 
-# Toggle Touchpad
-"synclient TouchpadOff=`synclient -l | awk '/TouchpadOff/ { print !$3 }'`"
-    XF86TouchpadToggle
-
 # Pause music
 "cmus-remote -u"
     Control + XF86AudioMute
@@ -100,6 +98,14 @@
 # Previous music
 "cmus-remote -r"
     Control + XF86AudioLowerVolume
+
+#==============================================================================
+#   Mouse & Touchpad
+#==============================================================================
+
+# Toggle Touchpad
+"synclient TouchpadOff=`synclient -l | awk '/TouchpadOff/ { print !$3 }'`"
+    XF86TouchpadToggle
 
 "xdotool click 1"
     Shift + KP_Left
@@ -113,6 +119,17 @@
 # What is this music (cmus)
 "music_notifier.sh -t 2000 -c"
     Shift + XF86AudioMute
+
+#==============================================================================
+#   Brightness
+#==============================================================================
+
+"xbacklight -inc 10"
+    XF86KbdBrightnessUp
+
+"xbacklight -dec 10"
+    XF86KbdBrightnessDown
+
 ##################################
 # End of xbindkeys configuration #
 ##################################

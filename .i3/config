@@ -189,6 +189,6 @@ exec --no-startup-id i3-msg 'workspace $w2; exec xterm'
 #exec --no-startup-id i3-msg 'exec xbacklight -set 100'
 
 # xautolock
-exec --no-startup-id xautolock -notify 60 -notifier "/home/chamow/mybin/mynotifier 60" -time 10 -locker 'i3lock -ti /home/chamow/.i3/lock.png'
+exec --no-startup-id xautolock -detectsleep -notify 60 -notifier "/home/chamow/mybin/mynotifier 60" -time 10 -locker 'i3lock -ti /home/chamow/.i3/lock.png'
 
 
