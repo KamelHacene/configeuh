@@ -65,6 +65,13 @@ alias wine_steam="sudo unshare -n primusrun wine /data/Wine/drive_c/Program\ Fil
 alias wine_steam_n="primusrun wine /data/Wine/drive_c/Program\ Files\ \(x86\)/Steam/Steam.exe"
 
 #------------------------------------------------------------------------------
+#   valgrind
+#------------------------------------------------------------------------------
+
+alias valgrind='valgrind --leak-check=full'
+
+
+#------------------------------------------------------------------------------
 #   Other/Funny
 #------------------------------------------------------------------------------
 

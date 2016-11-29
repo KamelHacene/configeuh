@@ -160,7 +160,7 @@ set noautowrite
 set nohidden
 
 " Clipboard buffer
-set clipboard=unnamed
+" set clipboard=unnamed
 
 """ Mouse
 " No mouse
