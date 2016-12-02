@@ -70,6 +70,11 @@ alias wine_steam_n="primusrun wine /data/Wine/drive_c/Program\ Files\ \(x86\)/St
 
 alias valgrind='valgrind --leak-check=full'
 
+#------------------------------------------------------------------------------
+#   git
+#------------------------------------------------------------------------------
+
+alias gitmodified='git status -uno | sed -n "s/^\s\+modified:\s*//p"'
 
 #------------------------------------------------------------------------------
 #   Other/Funny
