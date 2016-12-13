@@ -15,6 +15,13 @@ runtime! archlinux.vim
 " and configure vim to your own liking!
 
 "==============================================================================
+"   Global
+"==============================================================================
+
+" Leader Key
+let mapleader=','
+
+"==============================================================================
 "   Extensions
 "==============================================================================
 
@@ -42,13 +49,50 @@ call pathogen#helptags()
 "   TagBar
 "------------------------------------------------------------------------------
 
-" nnoremap <C-n> :TagbarToggle<CR>
+nnoremap <C-n> :TagbarToggle<CR>
+
+"------------------------------------------------------------------------------
+"   Airline
+"------------------------------------------------------------------------------
+
+let g:airline#extensions#tagbar#enabled = 1
+"let g:airline_theme ='lucius'
+let g:airline_theme ='raven'
+"let g:airline_theme ='wombat'
+
+"------------------------------------------------------------------------------
+"   NerdCommenter
+"------------------------------------------------------------------------------
+
+" Enable file type checking
+filetype plugin on
 
 "------------------------------------------------------------------------------
 "   YouCompleteMe
 "------------------------------------------------------------------------------
 
 " let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
+
+"------------------------------------------------------------------------------
+"   DoxygenToolKit
+"------------------------------------------------------------------------------
+
+"let g:DoxygenToolkit_blockHeader="--------------------------------------------------------------------------"
+"let g:DoxygenToolkit_blockFooter="----------------------------------------------------------------------------"
+let g:DoxygenToolkit_interCommentTag=" * "
+let g:DoxygenToolkit_interCommentBlock=" * "
+let g:DoxygenToolkit_endCommentTag=" */"
+let g:DoxygenToolkit_endCommentBlock=" */"
+
+let g:DoxygenToolkit_briefTag_post = "- "
+let g:DoxygenToolkit_briefTag_className = "yes"
+let g:DoxygenToolkit_briefTag_structName = "yes"
+let g:DoxygenToolkit_briefTag_enumName = "yes"
+let g:DoxygenToolkit_briefTag_namespaceName = "yes"
+let g:DoxygenToolkit_briefTag_funcName = "yes"
+
+let g:DoxygenToolkit_authorName = "Kamel Hacene"
+let g:DoxygenToolkit_versionString = "1.0"
 
 "==============================================================================
 "   Search mode
@@ -104,6 +148,9 @@ set virtualedit=block
 
 " Enter whithout insert mode
 nmap <A-o> o<Esc>k
+
+" Last command
+nnoremap ; q:k$
 
 "==============================================================================
 "   Insert Mode
