@@ -61,14 +61,23 @@ alias ....='cd ../../..'
 #------------------------------------------------------------------------------
 
 alias nvidia-settings="primusrun nvidia-settings -c :8"
+
+#------------------------------------------------------------------------------
+#   wine
+#------------------------------------------------------------------------------
+alias winecfg32="WINEARCH=win32 WINEPREFIX=~/win32 winecfg"
+alias wine32="WINEARCH=win32 WINEPREFIX=~/win32 wine"
 alias wine_steam="sudo unshare -n primusrun wine /data/Wine/drive_c/Program\ Files\ \(x86\)/Steam/Steam.exe"
 alias wine_steam_n="primusrun wine /data/Wine/drive_c/Program\ Files\ \(x86\)/Steam/Steam.exe"
+
+#export WINEDEBUG=warn+all,fixme-all,err+all
+export WINEDEBUG=fixme-all,err+all
 
 #------------------------------------------------------------------------------
 #   valgrind
 #------------------------------------------------------------------------------
 
-alias valgrind='valgrind --leak-check=full'
+#alias valgrind='valgrind --leak-check=full'
 
 #------------------------------------------------------------------------------
 #   git
@@ -91,9 +100,6 @@ alias meteo=supermeteo
 #alias tmux="TERM=screen-256color-bce tmux"
 #alias tmuxa="tmux attach-session || tmux new-session -s main_session"
 
-#export WINEDEBUG=warn+all,fixme-all,err+all
-export WINEDEBUG=fixme-all,err+all
-
 #==============================================================================
 #   PROMPT
 #==============================================================================
@@ -107,7 +113,7 @@ get_git_is_stash_in_branch() {
 }
 
 #PS1='[\u@\h \W]\$ '  # Default
-PROMPT_DIRTRIM=5
+PROMPT_DIRTRIM=2
 PS1="\[\e[0;32m\]\u\[\e[m\] \[\e[1;34m\]\w\[\e[m\]:\[\e[1;31m\]\$(get_git_is_stash_in_branch)\[\e[m\]:\[\e[0;33m\]\$(get_git_branch)\[\e[1;32m\]\$\[\e[m\] "
 #PS1='\[\e[0;32m\]\u\[\e[m\] \[\e[1;34m\]\w\[\e[m\] \[\e[1;32m\]\$\[\e[m\] \[\e[1;34m\]'
 #PS1='[\u@\h \W]\$ '
