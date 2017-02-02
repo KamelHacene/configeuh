@@ -1,0 +1,38 @@
+# vim : filetype=conf
+
+# Configuration model file location : /usr/share/offlineimap
+# Based on the minimal configuration
+
+[general]
+# List of accounts to be synced, separated by a comma.
+accounts = Gmail
+pythonfile = ~/mybin/decrypt.py
+
+# ============================================================================= 
+#   GMAIL
+# ============================================================================= 
+
+[Account Gmail]
+localrepository = Gmail-local
+remoterepository = Gmail-remote
+# maxage = 30
+# Status cache. Default is plain, which eventually becomes huge and slow.
+# status_backend = sqlite
+
+[Repository Gmail-local]
+type = Maildir
+localfolders = ~/Mail/Gmail
+
+[Repository Gmail-remote]
+type = Gmail
+#remotehost = host.domain.tld
+remoteuser = kamel.h1206@gmail.com
+#remotepass = wcifqojqngltpsan
+remotepasseval = decrypt("~/.mutt/gmail.gpg")
+realdelete = yes
+sslcacertfile = /etc/ssl/certs/ca-certificates.crt
+#nametrans = lambda foldername: re.sub ('^\[gmail\]', 'bak',
+#                               re.sub ('sent_mail', 'sent',
+#                               re.sub ('starred', 'flagged',
+#                               re.sub (' ', '_', foldername.lower()))))
+#folderfilter = lambda foldername: foldername not in ['[Gmail]/All Mail']

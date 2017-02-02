@@ -1,0 +1,103 @@
+
+#==============================================================================
+#  Mutt Predefined variables
+#==============================================================================
+
+set editor        = vim
+
+#==============================================================================
+#  IMAP
+#==============================================================================
+
+set mbox_type     = Maildir
+set folder        = ~/Mail/Gmail
+set spoolfile     = +INBOX
+set mbox          = "+[Gmail].All Mail"
+set postponed     = "+[Gmail].Drafts"
+mailboxes         = +INBOX
+
+
+
+
+## User account
+#set folder        = imaps://imap.gmail.com
+#
+#set header_cache  = ~/.cache/mutt
+#
+##
+#set spoolfile     = +INBOX
+#
+## Mailboxes
+#mailboxes         = +INBOX
+#
+## Postponed messages
+#set postponed     = +[Gmail]/Drafts
+#
+## Open new imap connection automatically
+#unset imap_passive
+#
+## Keep IMAP connection alive by polling
+#set imap_keepalive = 300
+#
+## Check for new mails
+#set mail_check = 120
+#
+
+#==============================================================================
+#  SMTP
+#==============================================================================
+
+unset record
+
+set realname    = 'Kamel Hacene'
+set sendmail    = "/usr/bin/msmtp"
+
+#==============================================================================
+#  Encrypt
+#==============================================================================
+
+set crypt_use_gpgme     = yes
+set crypt_replysign     = yes
+set crypt_replysignencrypted = yes
+set pgp_timeout         = 3600
+
+#==============================================================================
+#  Other variables
+#==============================================================================
+
+# Display
+set date_format   = "%d-%m-%y(EU) %T(GMT+1)"
+set index_format  = "%5C | %Z [%d] %-30.30F (%-4.4c) %s"
+set attribution   = "[%d] %n :"
+
+# Add signature to mails
+set signature = "~/.mutt/signature"
+
+unset move
+
+#==============================================================================
+#  Colors
+#==============================================================================
+
+# Palette for use with the Linux console.  Black background.
+
+color hdrdefault blue black
+color quoted blue black
+color signature blue black
+color attachment red black
+color prompt brightmagenta black
+color message brightred black
+color error brightred black
+color indicator black red
+color status brightgreen blue
+color tree white black
+color normal white black
+color markers red black
+color search white black
+color tilde brightmagenta black
+color index blue black ~F
+color index red black "~N|~O"
+
+color body brightwhite black '\*+[^*]+\*+'
+color body brightwhite black '_+[^_]+_+'
+
