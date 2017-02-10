@@ -389,6 +389,9 @@ set relativenumber
 set wildmenu
 set wildmode=list:longest
 
+" Highlight cursor line
+set cursorline
+
 "------------------------------------------------------------------------------
 "   Colors
 "------------------------------------------------------------------------------
@@ -405,6 +408,7 @@ set colorcolumn=80
 "------------------------------------------------------------------------------
 "   Highlighting
 "------------------------------------------------------------------------------
+
 :highlight ExtraWhitespace ctermbg=red guibg=red
 :match ExtraWhitespace /\s\+$/
 :autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
@@ -433,6 +437,10 @@ set listchars=tab:▸·,nbsp:⏎
 "------------------------------------------------------------------------------
 "   Tools
 "------------------------------------------------------------------------------
+
+" Remove extra space
+command CleanSpace  :%s/\s\+$//g
+
 
 " Autocorrect
 map <silent> <F9> "<Esc>:silent setlocal spell! spelllang=fr<CR>"

@@ -31,6 +31,7 @@ remoteuser = kamel.h1206@gmail.com
 remotepasseval = decrypt("~/.mutt/gmail.gpg")
 realdelete = yes
 sslcacertfile = /etc/ssl/certs/ca-certificates.crt
+auth_mechanisms = GSSAPI, CRAM-MD5, PLAIN, LOGIN, XOAUTH2
 #nametrans = lambda foldername: re.sub ('^\[gmail\]', 'bak',
 #                               re.sub ('sent_mail', 'sent',
 #                               re.sub ('starred', 'flagged',

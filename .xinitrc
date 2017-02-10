@@ -54,6 +54,8 @@ xset r rate 250 30
 
 xbindkeys
 
+#xautolock -detectsleep -notify 60 -notifier "/home/chamow/mybin/mynotifier 60" -time 10 -locker 'i3lock -ti /home/chamow/.i3/lock.png'
+
 #twm &
 #xclock -geometry 50x50-1+1 &
 #xterm -geometry 80x50+494+51 &

@@ -1,9 +1,22 @@
 
 #==============================================================================
-#  Mutt Predefined variables
+#  Mutt Editor
 #==============================================================================
 
+# Text
 set editor        = vim
+
+# Html
+set mailcap_path  = ~/.mutt/mailcap
+
+# Url
+#macro pager \cb <pipe-entry>'urlview'<enter> 'Follow links with urlview'
+
+auto_view text/html
+#alternative_order text/plain text/html
+
+macro attach,pager 'z' "<pipe-entry>cat >~/.cache/mutt/mail.html && vivaldi-stable ~/.cache/mutt/mail.html<enter>"
+
 
 #==============================================================================
 #  IMAP
@@ -14,9 +27,19 @@ set folder        = ~/Mail/Gmail
 set spoolfile     = +INBOX
 set mbox          = "+[Gmail].All Mail"
 set postponed     = "+[Gmail].Drafts"
-mailboxes         = +INBOX
 
+mailboxes         ="----- Gmail -----"
+mailboxes         +INBOX
+mailboxes         +[Gmail].All\ Mail
+mailboxes         +[Gmail].Bin
+mailboxes         +[Gmail].Sent\ Mail
+mailboxes         +[Gmail].Important
+mailboxes         +"----- Sorted ----"
+mailboxes         +Receipts +Work +Personal +Travel
 
+bind index,pager \CK  sidebar-prev
+bind index,pager \CJ  sidebar-next
+bind index,pager \CL  sidebar-open
 
 
 ## User account
@@ -62,6 +85,14 @@ set crypt_replysignencrypted = yes
 set pgp_timeout         = 3600
 
 #==============================================================================
+#  Contacts
+#==============================================================================
+
+set query_command = "abook --mutt-query '%s'"
+macro index,pager  a "<pipe-message>abook --add-email-quiet<return>" "Add this sender to Abook"
+bind editor        <Tab> complete-query
+
+#==============================================================================
 #  Other variables
 #==============================================================================
 
@@ -73,7 +104,10 @@ set attribution   = "[%d] %n :"
 # Add signature to mails
 set signature = "~/.mutt/signature"
 
-unset move
+#unset move
+
+set sidebar_visible = yes
+
 
 #==============================================================================
 #  Colors
