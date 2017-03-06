@@ -403,7 +403,11 @@ colors jellybeans
 "colorscheme mustang
 
 " Columns
-set colorcolumn=80
+" Color
+set colorcolumn=80,100
+" Linebreak at 100
+set formatoptions+=t
+set textwidth=100
 
 "------------------------------------------------------------------------------
 "   Highlighting
