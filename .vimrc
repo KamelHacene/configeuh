@@ -51,6 +51,7 @@ call pathogen#helptags()
 
 nnoremap <C-n> :TagbarToggle<CR>
 
+
 "------------------------------------------------------------------------------
 "   Airline
 "------------------------------------------------------------------------------
@@ -221,7 +222,7 @@ set t_vb=
 
 """ Command line
 
-" Show the current 'combot' in the command line
+" Show the current wombat in the command line
 set showcmd
 
 " Redraw only when necessary
@@ -413,7 +414,7 @@ set textwidth=100
 "   Highlighting
 "------------------------------------------------------------------------------
 
-:highlight ExtraWhitespace ctermbg=red guibg=red
+:highlight ExtraWhitespace ctermbg=brown guibg=red
 :match ExtraWhitespace /\s\+$/
 :autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
 :autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
@@ -436,7 +437,9 @@ set textwidth=100
 "   Invisible characters
 "------------------------------------------------------------------------------
 set list
-set listchars=tab:▸·,nbsp:⏎
+"set listchars=tab:▸·,nbsp:⏎
+set listchars=tab:▸·,nbsp:⏎,trail:␣
+"set listchars=tab:▸·,nbsp:⏎,trail:·
 
 "------------------------------------------------------------------------------
 "   Tools
@@ -444,7 +447,6 @@ set listchars=tab:▸·,nbsp:⏎
 
 " Remove extra space
 command CleanSpace  :%s/\s\+$//g
-
 
 " Autocorrect
 map <silent> <F9> "<Esc>:silent setlocal spell! spelllang=fr<CR>"
