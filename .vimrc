@@ -167,6 +167,10 @@ set softtabstop=2
 set shiftwidth=2
 set expandtab
 
+" Indent Settings
+set autoindent
+set smartindent
+
 "------------------------------------------------------------------------------
 "   Mappings
 "------------------------------------------------------------------------------
@@ -405,10 +409,10 @@ colors jellybeans
 
 " Columns
 " Color
-set colorcolumn=80,100
-" Linebreak at 100
+set colorcolumn=80,130
+" Linebreak at 130
 set formatoptions+=t
-set textwidth=100
+set textwidth=130
 
 "------------------------------------------------------------------------------
 "   Highlighting
