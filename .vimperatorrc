@@ -1,2 +1,9 @@
+" Colorscheme
 colorscheme darkness
-set focuscontent
+set focuscontent=true
+set ignorecase=true
+set incsearch=false
+set statuslinevisibility=visible
+set tabnumbers=true
+
+set hintchars=qmsldkfjghapzoeirutywnxbcv
