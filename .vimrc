@@ -77,13 +77,14 @@ filetype plugin on
 "------------------------------------------------------------------------------
 "   DoxygenToolKit
 "------------------------------------------------------------------------------
+let g:load_doxygen_syntax=1
 
 "let g:DoxygenToolkit_blockHeader="--------------------------------------------------------------------------"
 "let g:DoxygenToolkit_blockFooter="----------------------------------------------------------------------------"
-let g:DoxygenToolkit_interCommentTag=" * "
-let g:DoxygenToolkit_interCommentBlock=" * "
-let g:DoxygenToolkit_endCommentTag=" */"
-let g:DoxygenToolkit_endCommentBlock=" */"
+let g:DoxygenToolkit_interCommentTag="* "
+let g:DoxygenToolkit_interCommentBlock="* "
+let g:DoxygenToolkit_endCommentTag="*/"
+let g:DoxygenToolkit_endCommentBlock="*/"
 
 let g:DoxygenToolkit_briefTag_post = "- "
 let g:DoxygenToolkit_briefTag_className = "yes"
