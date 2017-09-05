@@ -152,7 +152,7 @@ set virtualedit=block
 nmap <A-o> o<Esc>k
 
 " Last command
-nnoremap ; q:k$
+nnoremap § q:k$
 
 "==============================================================================
 "   Insert Mode

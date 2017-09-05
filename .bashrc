@@ -9,6 +9,9 @@
 #   BASH
 #==============================================================================
 
+# Remove rx rights to any other users by defaults
+umask 0077
+
 # Set cursor rate (Arch Linux : Done in xinitrc)
 #xset r rate 250 30
 
@@ -41,6 +44,41 @@ mansections()
 {
   man -k $1 | grep "^$1\s*("
 }
+
+#------------------------------------------------------------------------------
+#   rm
+#------------------------------------------------------------------------------
+saferm()
+{
+  rmCommand=$@
+  correct=$(echo $rmCommand | sed -n -E "s,(\s|^)./, ,gp")
+
+  # Safety check
+  if [ ! -z "$correct" ]; then
+    echo -e "\033[0;31m SAFE-RM WARNING ! \033[0m Given :"
+    echo "# ===== Given"
+    echo "$@"
+    echo "# ===== Corrected to"
+    echo "$correct"
+    echo "# ===== What to do ?"
+    select yn in "Correct" "Continue" "Stop"; do
+      case $yn in
+        Correct  ) rmCommand=$correct; break;;
+        Continue ) break;;
+        Stop ) return 1;;
+        esac
+    done
+  fi
+
+  # Blacklist verification done by safe-rm
+  safe-rm $rmCommand
+}
+alias rm='saferm'
+
+#------------------------------------------------------------------------------
+#   dd
+#------------------------------------------------------------------------------
+#alias dd='pv'
 
 #------------------------------------------------------------------------------
 #   time
@@ -180,6 +218,11 @@ export TERM=xterm-256color
 
 export wiki_browser=firefox # needed by wiki-search command
 export VISUAL="vim"         # yaourt PKGBUILD editor
+if [ -n "$DISPLAY" ]; then
+  export BROWSER=firefox
+else
+  export BROWSER=links
+fi
 
 #------------------------------------------------------------------------------
 #   Chamow scripts
