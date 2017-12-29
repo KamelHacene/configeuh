@@ -15,6 +15,32 @@ runtime! archlinux.vim
 " and configure vim to your own liking!
 
 "==============================================================================
+"   Vundle
+"==============================================================================
+
+set nocompatible
+filetype off
+
+set rtp+=~/.vim/bundle/Vundle.vim
+
+call vundle#begin()
+Plugin 'VundleVim/Vundle.vim'
+Plugin 'tpope/vim-fugitive'
+Plugin 'airblade/vim-gitgutter'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+Plugin 'majutsushi/tagbar'
+Plugin 'vim-scripts/VisIncr'
+Plugin 'vim-scripts/Align'
+Plugin 'vim-scripts/DoxygenToolkit.vim'
+Plugin 'vimperator/vimperator.vim'
+Plugin 'lifepillar/pgsql.vim'
+Plugin 'chazy/cscope_maps'
+call vundle#end()
+
+filetype plugin indent on
+
+"==============================================================================
 "   Global
 "==============================================================================
 
@@ -29,8 +55,8 @@ let mapleader=','
 "   Pathogen
 "------------------------------------------------------------------------------
 
-call pathogen#infect()
-call pathogen#helptags()
+"call pathogen#infect()
+"call pathogen#helptags()
 
 "------------------------------------------------------------------------------
 "   Syntastic
@@ -51,7 +77,6 @@ call pathogen#helptags()
 
 nnoremap <C-n> :TagbarToggle<CR>
 
-
 "------------------------------------------------------------------------------
 "   Airline
 "------------------------------------------------------------------------------
@@ -60,6 +85,17 @@ let g:airline#extensions#tagbar#enabled = 1
 "let g:airline_theme ='lucius'
 let g:airline_theme ='raven'
 "let g:airline_theme ='wombat'
+
+"------------------------------------------------------------------------------
+"   Netrw
+"------------------------------------------------------------------------------
+
+" Show as tree
+let g:netrw_liststyle = 3
+" Create tab to open file
+let g:netrw_browse_split = 3
+" Right splitting
+let g:netrw_altv = 1
 
 "------------------------------------------------------------------------------
 "   NerdCommenter
@@ -168,6 +204,9 @@ set softtabstop=2
 set shiftwidth=2
 set expandtab
 
+" Ignore in makefiles
+autocmd FileType make setlocal noexpandtab
+
 " Indent Settings
 set autoindent
 set smartindent
@@ -182,15 +221,6 @@ map <PageUp> k
 map <PageDown> j
 imap <PageUp> <UP>
 imap <PageDown> <DOWN>
-
-"------------------------------------------------------------------------------
-"   Special characters
-"------------------------------------------------------------------------------
-
-""" Tabs
-
-" Ignore in makefiles
-autocmd FileType make setlocal noexpandtab
 
 "==============================================================================
 "   Environment
@@ -488,7 +518,5 @@ nnoremap j gj
 nnoremap k gk
 
 nnoremap gV `[v`]
-
-
 
 

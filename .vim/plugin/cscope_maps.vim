@@ -131,6 +131,14 @@ if has("cscope")
     nmap <C-@><C-@>i :vert scs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
     nmap <C-@><C-@>d :vert scs find d <C-R>=expand("<cword>")<CR><CR>
 
+    nmap <C-@><C-@><C-@>s :tabe<CR> cs find s <C-R>=expand("<cword>")<CR><CR>
+    nmap <C-@><C-@><C-@>g :tabe<CR> cs find g <C-R>=expand("<cword>")<CR><CR>
+    nmap <C-@><C-@><C-@>c :tabe<CR> cs find c <C-R>=expand("<cword>")<CR><CR>
+    nmap <C-@><C-@><C-@>t :tabe<CR> cs find t <C-R>=expand("<cword>")<CR><CR>
+    nmap <C-@><C-@><C-@>e :tabe<CR> cs find e <C-R>=expand("<cword>")<CR><CR>
+    nmap <C-@><C-@><C-@>f :tabe<CR> cs find f <C-R>=expand("<cfile>")<CR><CR>
+    nmap <C-@><C-@><C-@>i :tabe<CR> cs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
+    nmap <C-@><C-@><C-@>d :tabe<CR> cs find d <C-R>=expand("<cword>")<CR><CR>
 
     """"""""""""" key map timeouts
     "
