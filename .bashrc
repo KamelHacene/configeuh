@@ -16,7 +16,7 @@ umask 0077
 #xset r rate 250 30
 
 # Set vim bindings
-set -o vi
+#set -o vi
 
 # Disable XON/XOFF (Ctrl+s Ctrl+q)
 stty -ixon
@@ -31,6 +31,19 @@ bind '"\C-l":clear'
 #==============================================================================
 #   ALIAS
 #==============================================================================
+
+#------------------------------------------------------------------------------
+#   Qemu
+#------------------------------------------------------------------------------
+
+alias qemukvm='qemu-system-x86_64 -enable-kvm -m 512M'
+
+#------------------------------------------------------------------------------
+#   Sway
+#------------------------------------------------------------------------------
+
+# Start in azerty
+alias sway='export XKB_DEFAULT_LAYOUT=fr-latin9; export XKB_DEFAULT_MODEL=latitude; sway'
 
 #------------------------------------------------------------------------------
 #   commands that i always forget
@@ -73,7 +86,7 @@ saferm()
   # Blacklist verification done by safe-rm
   safe-rm $rmCommand
 }
-alias rm='saferm'
+#alias rm='saferm'
 
 #------------------------------------------------------------------------------
 #   dd
@@ -98,8 +111,8 @@ alias ctags='ctags --langmap=c++:+.ino'
 #------------------------------------------------------------------------------
 #   cal
 #------------------------------------------------------------------------------
-alias cal='rem -m -clc+4 -b2'
-alias caldyn='wyrd'
+alias pal='rem -m -clc+4 -b2'
+alias paldyn='wyrd'
 
 #------------------------------------------------------------------------------
 #   grep
@@ -172,7 +185,14 @@ alias gitdeleted='git status -uno | sed -n "s/^\s\+deleted:\s*//p"'
 #   Other/Funny
 #------------------------------------------------------------------------------
 
-alias fortune="fortune -a | cowthink -f $(shuf -n 1 -e $(find /usr/share/cows))"
+#alias fortune="fortune -a | cowthink -f $(shuf -n 1 -e $(find /usr/share/cows))"
+
+fortune()
+{
+  local cowfile=$(shuf -n 1 -e $(find /usr/share/cows))
+  /usr/bin/fortune -a | cowthink -f ${cowfile}
+}
+
 supermeteo()
 {
     curl -4 wttr.in/$1
@@ -187,17 +207,29 @@ alias meteo=supermeteo
 #   PROMPT
 #==============================================================================
 
-get_git_branch() {
-    git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/'
-}
-
-get_git_is_stash_in_branch() {
-    git stash list 2> /dev/null | sed -ne "0,/^stash@{[[:digit:]]\+}:\sWIP\son\s$(get_git_branch).*$/s//\/!\\\/p"
-}
+PROMPT_DIRTRIM=2
+GIT_PS1_SHOWDIRTYSTATE="enable"
+GIT_PS1_SHOWSTASHSTATE="enable"
+GIT_PS1_SHOWUPSTREAM="auto"
 
 #PS1='[\u@\h \W]\$ '  # Default
-PROMPT_DIRTRIM=2
-PS1="\[\e[0;32m\]\u\[\e[m\] \[\e[1;34m\]\w\[\e[m\]:\[\e[1;31m\]\$(get_git_is_stash_in_branch)\[\e[m\]:\[\e[0;33m\]\$(get_git_branch)\[\e[1;32m\]\$\[\e[m\] "
+source /usr/share/git/completion/git-prompt.sh
+PS1=''
+PS1+='\[\e[0;32m\]\u\[\e[m\]'
+PS1+=' '
+PS1+='\[\e[1;34m\]\w\[\e[m\]'
+PS1+='$(__git_ps1 ":\[\e[0;33m\]%s")\[\e[m\]'
+PS1+='\[\e[0;32m\]$\[\e[m\] '
+
+#PS1='[\u@\h \W$(__git_ps1 " (%s)")]\$ '
+#PS1="\[\e[0;32m\]\u\[\e[m\] \[\e[1;34m\]\w\[\e[m\]:\[\e[0;33m\] [\u@\h \W$(__git_ps1 " (%s)")]\$ \[\e[1;32m\]\$\[\e[m\] "
+#get_git_branch() {
+#    git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/'
+#}
+#get_git_is_stash_in_branch() {
+#    git stash list 2> /dev/null | sed -ne "0,/^stash@{[[:digit:]]\+}:\sWIP\son\s$(get_git_branch).*$/s//\/!\\\/p"
+#}
+#PS1="\[\e[0;32m\]\u\[\e[m\] \[\e[1;34m\]\w\[\e[m\]:\[\e[1;31m\]\$(get_git_is_stash_in_branch)\[\e[m\]:\[\e[0;33m\]\$(get_git_branch)\[\e[1;32m\]\$\[\e[m\] "
 #PS1='\[\e[0;32m\]\u\[\e[m\] \[\e[1;34m\]\w\[\e[m\] \[\e[1;32m\]\$\[\e[m\] \[\e[1;34m\]'
 #PS1='[\u@\h \W]\$ '
 
@@ -206,15 +238,13 @@ PS1="\[\e[0;32m\]\u\[\e[m\] \[\e[1;34m\]\w\[\e[m\]:\[\e[1;31m\]\$(get_git_is_sta
 #==============================================================================
 
 #------------------------------------------------------------------------------
-#   Kernel
-#------------------------------------------------------------------------------
-
-export EDITOR="vim"
-export TERM=xterm-256color
-
-#------------------------------------------------------------------------------
 #   Arch Linux
 #------------------------------------------------------------------------------
+
+export INPUTRC="$HOME/.config/inputrc"
+export EDITOR="vim"
+export TERM=xterm-256color
+#export TERM=rxvt-unicode
 
 export wiki_browser=firefox # needed by wiki-search command
 export VISUAL="vim"         # yaourt PKGBUILD editor
@@ -225,10 +255,15 @@ else
 fi
 
 #------------------------------------------------------------------------------
+#   Weechat
+#------------------------------------------------------------------------------
+export WEECHAT_HOME=$HOME/.config/weechat
+
+#------------------------------------------------------------------------------
 #   Chamow scripts
 #------------------------------------------------------------------------------
 
-export PATH=~/mybin:$PATH   # add to my binaries
+export PATH=~/bin:$PATH   # add to my binaries
 export PATH=~/.gem/ruby/2.4.0/bin:$PATH
 #------------------------------------------------------------------------------
 #   TrampolineOS
