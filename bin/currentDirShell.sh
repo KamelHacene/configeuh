@@ -1,7 +1,7 @@
 #!/bin/bash
 # i3 thread: https://faq.i3wm.org/question/150/how-to-launch-a-terminal-from-here/?answer=152#post-id-152
 
-CMD=xterm
+CMD=urxvt
 CWD=''
 
 # Get window ID
@@ -25,3 +25,4 @@ if [ -n "$CWD" ]; then
 else
   $CMD
 fi
+
