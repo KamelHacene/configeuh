@@ -39,6 +39,7 @@ readonly TC_YEL="\\033[1;33m"
 
 # Asciidoc
 readonly ASCIIDOC="asciidoctor"
+readonly ASCIIDOCPDF="asciidoctor-pdf"
 
 # -----------------------------------------------------------------------------
 # Functional
@@ -58,6 +59,15 @@ readonly DEFAULT_ERROR_EXIT_CODE="${EXIT_ERR_DEFAULT}"
 
 # Global Debug level
 readonly DEBUG_LEVEL="0"
+
+# Informations on checked commands displayed if the command does not
+# exists
+declare -A CHECK_TOOLS_INSTALL_INFO
+CHECK_TOOLS_INSTALL_INFO["${ASCIIDOC}"]="Installation command: sudo apt-get\
+  install asciidoctor"
+CHECK_TOOLS_INSTALL_INFO["${ASCIIDOCPDF}"]="Installation command: sudo gem\
+  install --http-proxy http://PROXYADDR:PROXYPORT asciidoctor-pdf --pre"
+readonly CHECK_TOOLS_INSTALL_INFO
 
 # =============================================================================
 #  GLOBALS (Do not modify)
@@ -221,8 +231,9 @@ f_checktools()
     if l_path=$(command -v ${l_tool}); then
       f_debug 3 "Tool ${l_tool} path: ${l_path}"
     else
+      l_info="${CHECK_TOOLS_INSTALL_INFO[${l_tool}]}"
       g_exitcode=${EXIT_ERR_EXE}
-      f_fatal "Tool ${l_tool} is required but cannot be found in path"
+      f_fatal "Tool ${l_tool} is required but cannot be found in path. ${l_info}"
     fi
   done
 }
@@ -239,8 +250,12 @@ f_argsParse()
         G_debuglevel="$2"
         shift 2
         ;;
+      -*)
+        f_fatal "Unsupported operation: $1"
+        shift
+        ;;
       *)
-        files="${files} $1"
+        f_fatal "Unexpected argument: $1"
         shift
         ;;
     esac
@@ -261,6 +276,9 @@ f_argsParse()
 
 # Initiate the arguments parsing
 f_argsParse "$@"
+
+# Check tools
+f_checktools ${ASCIIDOC} ${ASCIIDOCPDF}
 
 exit ${g_exitcode}
 
