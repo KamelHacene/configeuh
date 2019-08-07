@@ -290,7 +290,7 @@ set splitright
 
 """ Settings
 " Maximum number of tab pages
-set tabpagemax=100
+set tabpagemax=900
 
 """ Tabs to splits
 function! VspN()
@@ -353,8 +353,8 @@ command DiffVTabPrevious  call DSpN()
 " Move tab
 nnoremap <F7> :tabp<CR>
 nnoremap <F8> :tabn<CR>
-nnoremap <S-F8> :tabmove +1<CR>
 nnoremap <S-F7> :tabmove -1<CR>
+nnoremap <S-F8> :tabmove +1<CR>
 
 "==============================================================================
 "   StatusBar
@@ -443,7 +443,7 @@ colors jellybeans
 set colorcolumn=80,130
 " Linebreak at 130
 set formatoptions+=t
-set textwidth=130
+"set textwidth=130
 
 "------------------------------------------------------------------------------
 "   Highlighting
@@ -482,6 +482,10 @@ set listchars=tab:▸·,nbsp:⏎,trail:␣
 
 " Remove extra space
 command CleanSpace  :%s/\s\+$//g
+
+" Delete current file
+command DelCurr       :call delete(expand('%'))
+command BDelCurr      :call delete(expand('%')) | bdelete!
 
 " Autocorrect
 map <silent> <F9> "<Esc>:silent setlocal spell! spelllang=fr<CR>"
