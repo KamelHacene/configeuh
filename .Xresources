@@ -1,2 +1,4 @@
 #include ".Xresources.d/xterm/default"
+#include ".Xresources.d/urxvt/default"
+#include ".Xresources.d/rofi/default"
 

@@ -1,0 +1,58 @@
+
+urxvt.iso14755: false
+urxvt.iso14755_52: false
+
+! urxvt.perl-ext-common:default,resize-font
+! urxvt.resize-font.smaller: C-Down
+! urxvt.resize-font.bigger: C-Up
+urxvt.buffering: true
+urxvt.background: rgb:15/15/15
+urxvt.foreground: rgb:a8/a8/a8
+urxvt.color0: rgb:00/00/00
+urxvt.color1: rgb:a8/00/00
+urxvt.color10:  rgb:54/fc/54
+urxvt.color11:  rgb:fc/fc/54
+urxvt.color12:  rgb:54/54/fc
+urxvt.color13:  rgb:fc/54/fc
+urxvt.color14:  rgb:54/fc/fc
+urxvt.color15:  rgb:fc/fc/fc
+urxvt.color2: rgb:00/a8/00
+urxvt.color3: rgb:a8/54/00
+urxvt.color4: rgb:00/00/a8
+urxvt.color5: rgb:a8/00/a8
+urxvt.color6: rgb:00/a8/a8
+urxvt.color7: rgb:a8/a8/a8
+urxvt.color8: rgb:54/54/54
+urxvt.color9: rgb:fc/54/54
+urxvt.cursorColor: #93a1a1
+urxvt.reverseVideo: false
+urxvt.pointerColor:  #93a1a1
+urxvt.pointerColor2: #586e75
+
+! do not scroll with output
+URxvt*scrollTtyOutput: false
+
+! scroll in relation to buffer (with mouse scroll or Shift+Page Up)
+URxvt*scrollWithBuffer: true
+
+! scroll back to the bottom on keypress
+URxvt*scrollTtyKeypress: true
+URxvt.secondaryScreen: 1
+URxvt.secondaryScroll: 0
+URxvt.secondaryWheel: 1
+
+urxvt.fadeColor: #002b36
+urxvt.fading: 15
+
+urxvt.scrollBar         : true
+urxvt.scrollBar_right   : true
+urxvt.scrollBar_align   : bottom
+urxvt.scrollTtyOutput   : false
+urxvt.scrollWithBuffer  : false
+urxvt.scrollTtyKeypress : true
+urxvt.savelines         : 100000
+urxvt.scrollstyle       : plain
+urxvt.ticknexx          : 10
+urxvt.scrollColor       : #396a93
+urxvt.visualBell        : false
+urxvt.font : xft:DejaVu Sans Mono:pixelsize=12
