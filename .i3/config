@@ -42,7 +42,7 @@ font pango:DejaVu Sans Mono 9
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec ~/mybin/i3_shell.sh
+bindsym $mod+Return exec urxvt
 bindsym $mod+Shift+Return exec xterm
 
 bindsym $mod+1 workspace $w1
@@ -67,7 +67,7 @@ bindsym $mod+Shift+w kill
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
 #bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
-bindsym $mod+d exec --no-startup-id dmenu_run
+bindsym $mod+d exec --no-startup-id rofi -show
 
 
 # change focus
@@ -193,7 +193,13 @@ bar {
 #exec --no-startup-id i3-msg 'workspace $w2; exec xterm'
 #exec --no-startup-id i3-msg 'exec xbacklight -set 100'
 
+bindsym XF86AudioRaiseVolume exec "amixer -q sset Master,0 1%+ unmute"
+bindsym XF86AudioLowerVolume exec "amixer -q sset Master,0 1%- unmute"
+bindsym XF86AudioMute exec "amixer -q sset Master,0 toggle"
+
 # xautolock
-exec --no-startup-id xautolock -detectsleep -notify 60 -notifier "/home/chamow/mybin/mynotifier 60" -time 10 -locker 'i3lock -ti /home/chamow/.i3/lock.png'
+#exec --no-startup-id xautolock -detectsleep -notify 60 -notifier "/home/chamow/mybin/mynotifier 60" -time 10 -locker 'i3lock -ti /home/chamow/.i3/lock.png'
+
+exec --no-startup-id "setxkbmap -layout fr"
 
 
